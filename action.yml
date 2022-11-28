@@ -8,3 +8,5 @@ runs:
       uses: actions/checkout@v3
     - run: npm install
       shell: bash
+    - run: npm run coverage
+      shell: bash
