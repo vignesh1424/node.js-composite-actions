@@ -6,8 +6,6 @@ runs:
   steps:
     - name: check out the code
       uses: actions/checkout@v3
-    - run: npm install
-      shell: bash
     - run: npm run test
       shell: bash
     - run: npm run coverage
