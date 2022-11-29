@@ -5,6 +5,7 @@ runs:
   using: "composite"
   steps:
     - run: npm install
+      shell: bash
     - name: check out the code
       uses: actions/checkout@v3
     - run: npm run test
