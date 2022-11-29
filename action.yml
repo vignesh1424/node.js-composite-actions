@@ -5,9 +5,12 @@ runs:
   steps:
     - name: check out the code
       uses: actions/checkout@v3
-    - run: npm install
+    - name: Install the packages
+      run: npm install
       shell: bash
-    - run: npm run test
+    - name: Unit test
+      run: npm run test
       shell: bash
-    - run: npm run coverage
+    - name: Code coverage report
+      run: npm run coverage
       shell: bash
