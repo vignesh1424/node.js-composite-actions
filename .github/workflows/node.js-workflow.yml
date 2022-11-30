@@ -27,8 +27,8 @@ jobs:
     - name: Install the packages
       run: npm install
     - name: Unit test
-      if: ${{github.event.inputs.unit-test }} == "true"
+      if: ${{github.event.inputs.unit-test }} == true
       run: npm run test
     - name: Code coverage report
-      if: ${{ github.event.inputs.code-coverage }} == "true"
+      if: ${{ github.event.inputs.code-coverage }} == true
       run: npm run coverage
