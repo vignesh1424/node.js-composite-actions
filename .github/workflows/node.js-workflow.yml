@@ -5,10 +5,10 @@ on:
     branches: [ master ]
   workflow_call:
     inputs:
-      unit-test:
+      unit_test:
         required: true
         type: boolean
-      code-coverage:
+      code_coverage:
         required: true
         type: boolean
 
@@ -27,9 +27,9 @@ jobs:
     - name: Install the packages
       run: npm install
     - name: Unit test
-      if: ${{github.event.inputs.unit-test}} == true
+      if: ${{github.event.inputs.unit_test}} == true
       run: npm run test
     - name: Code coverage report
-      if: ${{ github.event.inputs.code-coverage }} == true
+      if: ${{ github.event.inputs.code_coverage }} == true
       run: npm run coverage
-    - run: echo ${{github.event.inputs.unit-test}}
+    - run: echo ${{github.event.inputs.unit_test}}
