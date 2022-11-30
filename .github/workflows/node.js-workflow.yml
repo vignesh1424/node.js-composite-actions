@@ -14,10 +14,5 @@ jobs:
   print_text:
     runs-on: 'ubuntu-20.04'
     steps:
-      - name: Set the variables
-        env:
-          DEFAULT_MESSAGE: 'Periodically printing passages' # here is the default message
-        run: echo "MESSAGE=${{ github.event.inputs.text_to_print || env.DEFAULT_MESSAGE }}" >> $GITHUB_ENV
-
       - name: Print some text
         run: echo ${{ github.event.inputs.text_to_print }} # prints the environmental variable, MESSAGE
