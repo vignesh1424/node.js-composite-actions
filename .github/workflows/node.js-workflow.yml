@@ -1,35 +1,21 @@
-name: Basic github actions  
+name: node.js-workflow
 
 on:
-  push:
-    branches: [ master ]
-  workflow_call:
+  workflow_dispatch:
     inputs:
       unit_test:
+        description: 'unit test'
+        default: ''
         required: true
-        type: boolean
       code_coverage:
+        description: 'code coverage'
+        default: ''
         required: true
-        type: boolean
 
 jobs:
-  test:
 
+  node-workflow:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-    - name: check out the code
-      uses: actions/checkout@v3
-    - name: Install the packages
-      run: npm install
-    - name: Unit test
-      if: ${{github.event.inputs.unit_test}} == true
-      run: npm run test
-    - name: Code coverage report
-      if: ${{ github.event.inputs.code_coverage }} == true
-      run: npm run coverage
-    - run: echo "hello ${{ github.event.inputs.unit_test }}""
+    - name: Send greeting
+      run: echo "Hello ${{ github.event.inputs.unit_test }}"
