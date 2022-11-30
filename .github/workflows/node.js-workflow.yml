@@ -32,4 +32,4 @@ jobs:
     - name: Code coverage report
       if: ${{ github.event.inputs.code_coverage }} == true
       run: npm run coverage
-    - run: echo ${{github.event.inputs.unit_test}}
+    - run: echo "hello ${{ github.event.inputs.unit_test }}""
