@@ -5,14 +5,27 @@ on:
   workflow_call:
   workflow_dispatch: # adding the workflow_dispatch so it can be triggered manually
     inputs:
-      text_to_print:
-        description: 'What text do you want to print?'
+      unit_test:
+        description: 'unit test'
         required: true
-        default: 'Periodically printing passages'
+        default: false
+        type: boolean
+      code_coverage:
+        description: 'code coverage'
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   print_text:
     runs-on: 'ubuntu-20.04'
     steps:
+      - name: Set the variables
+        env:
+          unit_test: false 
+          code_coverage: false 
+        run: echo "unittest=${{ github.event.inputs.unit_test || env.unit_test }}" "codecoverage=${{ github.event.inputs.code_coverage || env.unit_test }}" >> $GITHUB_ENV
+
+
       - name: Print some text
-        run: echo ${{ github.event.inputs.text_to_print }} # prints the environmental variable, MESSAGE
+        run: echo "$unittest"  && echo "$codecoverage" # prints the environmental variable, MESSAGE
