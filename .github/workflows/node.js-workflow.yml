@@ -20,22 +20,10 @@ jobs:
   print_text:
     runs-on: 'ubuntu-20.04'
     steps:
-      - name: Set the variables
-        env:
-          unit_test: false  
-        run: echo "unittest=${{ github.event.inputs.unit_test || env.unit_test }}" >> $GITHUB_ENV
-      - name: Print unit test
-        run: echo "$unittest"
-      - name: Set the variables
-        env:
-          code_coverage: false 
-        run: echo "codecoverage=${{ github.event.inputs.code_coverage || env.code_coverage }}" >> $GITHUB_ENV
-      - name: Print code coverage
-        run: echo "$codecoverage"
       - name: check out the code
         uses: actions/checkout@v3
       - name: Install the packages
-        run: npm install
+        run: npm install ${{ inputs.unit_test }} ${{ inputs.code_coverage }}
       - name: Unit test
         if: $${{ github.event.inputs.unit_test }} == true
         run: npm run test
