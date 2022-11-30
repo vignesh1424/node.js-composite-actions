@@ -25,10 +25,19 @@ jobs:
           unit_test: false  
         run: echo "unittest=${{ github.event.inputs.unit_test || env.unit_test }}" >> $GITHUB_ENV
       - name: Print unit test
-        run: echo "$unittest"  # prints the environmental variable, MESSAGE
+        run: echo "$unittest"
       - name: Set the variables
         env:
           code_coverage: false 
         run: echo "codecoverage=${{ github.event.inputs.code_coverage || env.code_coverage }}" >> $GITHUB_ENV
       - name: Print code coverage
-        run: echo "$codecoverage"  # prints the environmental variable, MESSAGE
+        run: echo "$codecoverage"
+
+      - name: Install the packages
+        run: npm install
+      - name: Unit test
+        if: $unittest == true
+        run: npm run test
+      - name: Code coverage report
+        if: $codecoverage == true
+        run: npm run coverage
