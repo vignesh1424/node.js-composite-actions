@@ -1,23 +1,32 @@
-name: node.js-workflow
+# This is a basic workflow that is manually triggered
 
+name: 020-manual-input-workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
 on:
   push:
     branches: [ master, main ]
-  workflow_call:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
     inputs:
-      test:
-        description: 'unit test'
-        type: boolean
-        required: true
-      code_coverage:
-        description: 'code coverage'
-        type: boolean
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
         required: true
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
-  node-workflow:
+  # This workflow contains a single job called "greet"
+  greet:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.test }}"
+      run: echo "Hello ${{ github.event.inputs.name }}"
