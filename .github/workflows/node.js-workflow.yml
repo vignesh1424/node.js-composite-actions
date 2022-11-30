@@ -5,7 +5,7 @@ on:
     branches: [ master ]
   workflow_call:
     inputs:
-      unit_test:
+      test:
         description: 'unit test'
         type: boolean
         required: true
@@ -20,4 +20,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.unit_test }}"
+      run: echo "Hello ${{ github.event.inputs.test }}"
