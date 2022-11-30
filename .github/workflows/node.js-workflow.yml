@@ -1,15 +1,17 @@
 name: node.js-workflow
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ master ]
+  workflow_call:
     inputs:
       unit_test:
         description: 'unit test'
-        default: ''
+        type: boolean
         required: true
       code_coverage:
         description: 'code coverage'
-        default: ''
+        type: boolean
         required: true
 
 jobs:
