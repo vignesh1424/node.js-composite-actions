@@ -32,7 +32,8 @@ jobs:
         run: echo "codecoverage=${{ github.event.inputs.code_coverage || env.code_coverage }}" >> $GITHUB_ENV
       - name: Print code coverage
         run: echo "$codecoverage"
-
+      - name: check out the code
+        uses: actions/checkout@v3
       - name: Install the packages
         run: npm install
       - name: Unit test
