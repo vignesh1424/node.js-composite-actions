@@ -23,5 +23,5 @@ runs:
       run: npm run coverage
       shell: bash
     - name: get the input
-      run: echo ${{ inputs.unitTest }}
+      run:  if [ ${{ inputs.unitTest }} == 0 ] then echo success
       shell: bash
