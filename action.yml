@@ -1,5 +1,13 @@
 name: 'build, test, code coverage report'
 description: 'composite actions'
+inputs:
+  unitTest:  # id of input
+    description: 'run unit test'
+    required: true
+  codecoverage:  # id of input
+    description: 'run code coverage'
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -14,3 +22,5 @@ runs:
     - name: Code coverage report
       run: npm run coverage
       shell: bash
+    - name: get the input
+      run: echo ${{ inputs.unitTest }}
