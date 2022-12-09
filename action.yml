@@ -16,9 +16,6 @@ runs:
     - name: Install the packages
       run: npm install
       shell: bash
-    - name: Unit test
-      run: npm run test
-      shell: bash
     - name: Unit testt
       run: | 
         unitTest=${{ inputs.unitTest }}
