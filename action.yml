@@ -20,13 +20,10 @@ runs:
       run: npm run test
       shell: bash
     - name: Code coverage report
-      run: npm run coverage
-      shell: bash
-    - name: get the input
       run: | 
         unitTest=${{ inputs.unitTest }}
         if [[ "${unitTest}" == true ]]; then
-          echo "success" 
+          npm run coverage 
         fi
       shell: bash
       
