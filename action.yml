@@ -24,6 +24,8 @@ runs:
         unitTest=${{ inputs.unitTest }}
         if [[ "${unitTest}" == true ]]; then
           npm run test
+        else
+          echo "unit test skipped" 
         fi
       shell: bash
     - name: Code coverage report
@@ -31,6 +33,8 @@ runs:
         codecoverage=${{ inputs.codecoverage }}
         if [[ "${codecoverage}" == true ]]; then
           npm run coverage
+        else
+          echo "code coverage skipped"
         fi
       shell: bash
       
