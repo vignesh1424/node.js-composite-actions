@@ -19,11 +19,17 @@ runs:
     - name: Unit test
       run: npm run test
       shell: bash
-    - name: Code coverage report
+    - name: Unit testt
       run: | 
         unitTest=${{ inputs.unitTest }}
         if [[ "${unitTest}" == true ]]; then
-          npm run coverage 
+          npm run test
+        fi
+    - name: Code coverage report
+      run: | 
+        codecoverage=${{ inputs.codecoverage }}
+        if [[ "${codecoverage}" == true ]]; then
+          npm run coverage
         fi
       shell: bash
       
