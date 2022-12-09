@@ -25,6 +25,7 @@ runs:
         if [[ "${unitTest}" == true ]]; then
           npm run test
         fi
+      shell: bash
     - name: Code coverage report
       run: | 
         codecoverage=${{ inputs.codecoverage }}
